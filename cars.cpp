@@ -34,6 +34,10 @@ void InputCAR(vector<CAR>&vec)
 void SortCAR(vector<CAR>vec)
 {
 }
+void PrintCar(CAR a)
+{
+	cout<<setw(10)<<a.marka<<setw(15)<<a.model<<setw(5)<<a.year<<setw(5)<<a.cubatura<<setw(8)<<a.power<<setw(8)<<a.price<<endl;
+}
 
 void ViewCAR(vector<CAR>vec)
 {
@@ -45,13 +49,84 @@ void ViewCAR(vector<CAR>vec)
 
   for (int i=0; i<vec.size(); i++)
   { 
-    cout<<setw(10)<<vec[i].marka<<setw(15)<<vec[i].model<<setw(5)<<vec[i].year<<setw(5)<<vec[i].cubatura<<setw(8)<<vec[i].power<<setw(8)<<vec[i].price<<endl;
+    PrintCar(vec[i]);
   }
  
 } 
 
+void SearchbyBrand(vector<CAR>vec)
+{
+	cout<<"\n Please enter part of brand:";
+	string s;
+	cin>>s;
+	int br=0;
+	cout<<"LIST OF CARS:\n";
+	for (int i=0; i<vec.size(); i++)
+     { 
+        std::size_t found = vec[i].marka.find(s);
+        if (found!=std::string::npos){
+                                 PrintCar(vec[i]);
+                                 br++;
+                             }
+    
+  }
+   if (br==0) cout<<"No cars!";	
+}
+
+void SearchbyYear(vector<CAR>vec)
+{
+	cout<<"\n Please enter year:";
+	int u;
+	cin>>u;
+	int br=0;
+	cout<<"LIST OF CARS:\n";
+	for (int i=0; i<vec.size(); i++)
+     { 
+        if (vec[i].year>=u){
+                                 PrintCar(vec[i]);
+                                 br++;
+                             }
+    
+  }
+   if (br==0) cout<<"No cars!";	
+}
+
+void SearchbyPrice(vector<CAR>vec)
+{
+	cout<<"\n Please enter year:";
+	int p;
+	cin>>p;
+	int br=0;
+	cout<<"LIST OF CARS:\n";
+	for (int i=0; i<vec.size(); i++)
+     { 
+        if (vec[i].price<=p){
+                                 PrintCar(vec[i]);
+                                 br++;
+                             }
+    
+  }
+   if (br==0) cout<<"No cars!";
+}
+
 void SearchCAR(vector<CAR>vec)
 {
+	int c;
+	cout<<"\n Please select search category:\n\n";
+  cout<<"1 - By brand\n";
+  cout<<"2 - By year of production\n";
+  cout<<"3 - By price\n";
+  cout<<"Your choice:";
+  cin>>c;
+  switch(c){
+  	case 1:SearchbyBrand(vec);
+  	       break;
+  	case 2:SearchbyYear(vec);
+  	       break;
+	case 3:SearchbyPrice(vec);
+  	       break;
+	default: cout<<"\nInvalid choice!"; 	
+  }
 }
 
 void DeleteCAR(vector<CAR>vec)
