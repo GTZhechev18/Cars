@@ -15,7 +15,7 @@ struct CAR{
 	float price;
 };
 
-void InputCAR(vector<CAR>&vec)
+void InputCAR(vector<CAR>&vec) //inputs car data
 {
 	CAR c;
  cout<<"\nInput CAR's data:\n\n";
@@ -34,15 +34,15 @@ void InputCAR(vector<CAR>&vec)
  vec.push_back (c);
 }
 
-void PrintCar(CAR a)
+void PrintCar(CAR a)  //prints car data
 {
 	cout<<setw(10)<<a.marka<<setw(15)<<a.model<<setw(5)<<a.year<<setw(5)<<a.cubatura<<setw(8)<<a.power<<setw(8)<<a.price<<endl;
 }
 
-bool compare (CAR a,CAR b)
+bool compare (CAR a,CAR b)  //compares 2 cars by brand
  { return (a.marka<b.marka); }
 
-void SortCAR(vector<CAR>vec)
+void SortCAR(vector<CAR>vec)  //sorts the vector
 {  int i;
   sort(vec.begin(), vec.end(), compare);
   for (int i = 0; i < vec.size(); i++) {
@@ -50,7 +50,7 @@ void SortCAR(vector<CAR>vec)
     }
 }
 
-void ViewCAR(vector<CAR>vec)
+void ViewCAR(vector<CAR>vec)  //lists all cars
 {
 	system("cls");
   if (vec.size()==0) { cout<<"\nNo cars!\n";
@@ -140,7 +140,7 @@ void SearchCAR(vector<CAR>vec)
   }
 }
 
-void DeleteCAR(vector<CAR>vec)
+void DeleteCAR(vector<CAR>&vec)
 {   
    if (vec.size()>0)
     {
